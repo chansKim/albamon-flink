@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.albamon'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://repository.01.mgt.iconic.albamon.com/repository/msa-maven-hosted'
+        allowInsecureProtocol = true
+    }
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'com.amazonaws:aws-kinesisanalytics-runtime:1.1.0'
+    implementation 'org.apache.flink:flink-connector-kinesis:1.15.4'
+    implementation 'org.apache.flink:flink-clients:1.18.0'
+    compileOnly 'org.apache.flink:flink-streaming-java:1.18.0'
+
+    implementation 'com.vladmihalcea:hibernate-types-52:2.14.0'
+    implementation 'org.json:json:20201115'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

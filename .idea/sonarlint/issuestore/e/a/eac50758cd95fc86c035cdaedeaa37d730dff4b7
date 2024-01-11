@@ -1,0 +1,33 @@
+
+W
+java:S1118":Add a private constructor to hide the implicit public one.(›ş—8ç¤ÇßÎ1
+š
+java:S1128"}Remove this unused import 'org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants.RecordPublisherType'.(çÎ¼à8 øûßÎ1
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8¡øûßÎ1
+P
+java:S1128".Remove this unused import 'java.util.HashMap'.(™˜”€ùÿÿÿÿ8£øûßÎ1
+L
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8¤øûßÎ1
+N
+java:S1128	"1Remove this unused import 'java.util.Properties'.(¬µ²8¥øûßÎ1
+u
+java:S1128"YRemove this unused import 'org.apache.flink.api.common.serialization.SimpleStringSchema'.(ç‹8§øûßÎ1
+g
+java:S1128"JRemove this unused import 'org.apache.flink.api.java.utils.ParameterTool'.(£¦’8¨øûßÎ1
+t
+java:S1128"WRemove this unused import 'org.apache.flink.connector.kinesis.sink.KinesisStreamsSink'.(«­Ï¹8©øûßÎ1
+s
+java:S1128"QRemove this unused import 'org.apache.flink.streaming.api.datastream.DataStream'.(™ôìÿÿÿÿÿ8«øûßÎ1
+€
+java:S1128"^Remove this unused import 'org.apache.flink.streaming.api.environment.LocalStreamEnvironment'.(ş¹èÿúÿÿÿÿ8¬øûßÎ1
+~
+java:S1128"bRemove this unused import 'org.apache.flink.streaming.api.environment.StreamExecutionEnvironment'.(¤÷8­øûßÎ1
+|
+java:S1128"_Remove this unused import 'org.apache.flink.streaming.connectors.kinesis.FlinkKinesisConsumer'.(Öè×8¯øûßÎ1
+
+java:S1128"dRemove this unused import 'org.apache.flink.streaming.connectors.kinesis.config.AWSConfigConstants'.(ŸŠ…8°øûßÎ1
+‹
+java:S1128"iRemove this unused import 'org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants'.(ªõî¾şÿÿÿÿ8±øûßÎ1
+
+java:S1128"dRemove this unused import 'com.amazonaws.services.kinesisanalytics.runtime.KinesisAnalyticsRuntime'.(ÓĞ¶¶8µøûßÎ1
