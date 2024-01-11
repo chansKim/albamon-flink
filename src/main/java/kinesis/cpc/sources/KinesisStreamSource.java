@@ -1,6 +1,6 @@
-package albamon.cpc.sources;
+package kinesis.cpc.sources;
 
-import static albamon.cpc.constants.FlinkConstants.*;
+import static kinesis.cpc.constants.FlinkConstants.*;
 import static org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants.*;
 import static org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants.RecordPublisherType.*;
 

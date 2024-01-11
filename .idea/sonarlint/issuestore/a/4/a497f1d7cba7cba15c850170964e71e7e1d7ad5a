@@ -1,7 +1,9 @@
 
 Ÿ
 java:S3252"ƒUse static access with "org.apache.flink.kinesis.shaded.org.apache.flink.connector.aws.config.AWSConfigConstants" for "AWS_REGION".(×Éú€øÿÿÿÿ
-¡
-java:S3252"ŠUse static access with "org.apache.flink.kinesis.shaded.org.apache.flink.connector.aws.config.AWSConfigConstants" for "AWS_ACCESS_KEY_ID".(Íş¬ª
-ª
-java:S3252"Use static access with "org.apache.flink.kinesis.shaded.org.apache.flink.connector.aws.config.AWSConfigConstants" for "AWS_SECRET_ACCESS_KEY".(æíÿÈşÿÿÿÿ
+¦
+java:S3252"ŠUse static access with "org.apache.flink.kinesis.shaded.org.apache.flink.connector.aws.config.AWSConfigConstants" for "AWS_ACCESS_KEY_ID".(©Åİ£úÿÿÿÿ
+¥
+java:S3252"Use static access with "org.apache.flink.kinesis.shaded.org.apache.flink.connector.aws.config.AWSConfigConstants" for "AWS_SECRET_ACCESS_KEY".(İÊÑ
+vsecrets:S6290"VMake sure this AWS Secret Access Key gets revoked, changed, and removed from the code.(İÊÑ8±Ø°·Ï1
+ksecrets:S6290"FMake sure the access granted with this AWS access key ID is restricted(©Åİ£úÿÿÿÿ8µØ°·Ï1

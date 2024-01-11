@@ -1,10 +1,9 @@
-package albamon.cpc.schemas;
+package kinesis.cpc.schemas;
 
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.core.JsonProcessingException;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 
-import albamon.cpc.constants.FlinkConstants;
+import kinesis.cpc.constants.FlinkConstants;
 
 public class JsonSerializationSchema<T> implements SerializationSchema<T> {
 

@@ -1,4 +1,4 @@
-package albamon.cpc.domains;
+package kinesis.cpc.domains;
 
 import java.time.LocalDateTime;
 

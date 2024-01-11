@@ -1,4 +1,4 @@
-package albamon.cpc.constants;
+package kinesis.cpc.constants;
 
 import static org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants.*;
 
@@ -22,7 +22,7 @@ public class FlinkConstants {
 	public final String DEFAULT_SINK_STREAM = "chansKinesis";
 	public final String DEFAULT_AWS_REGION = Regions.AP_NORTHEAST_2.getName();
 
-	public final long DEDUPE_CACHE_EXPIRATION_TIME_MS = 10_000;
+	public final long DEDUPE_CACHE_EXPIRATION_TIME_MS = 20_000;
 
 	public ObjectMapper objectMapper() {
 		ObjectMapper objectMapper = new ObjectMapper();

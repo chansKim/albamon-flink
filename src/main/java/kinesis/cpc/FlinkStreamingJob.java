@@ -1,19 +1,13 @@
-package albamon.cpc;
+package kinesis.cpc;
 
-import static albamon.cpc.constants.FlinkConstants.*;
+import static kinesis.cpc.constants.FlinkConstants.*;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.TimeZone;
 
 import org.apache.flink.api.java.utils.ParameterTool;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.DeserializationFeature;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.JsonNode;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.SerializationFeature;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.LocalStreamEnvironment;
@@ -22,11 +16,11 @@ import org.apache.flink.streaming.connectors.kinesis.FlinkKinesisConsumer;
 
 import com.amazonaws.services.kinesisanalytics.runtime.KinesisAnalyticsRuntime;
 
-import albamon.cpc.constants.FlinkConstants;
-import albamon.cpc.domains.AccessLog;
-import albamon.cpc.filters.DedupeFilterFunction;
-import albamon.cpc.sinks.KinesisStreamSink;
-import albamon.cpc.sources.KinesisStreamSource;
+import kinesis.cpc.constants.FlinkConstants;
+import kinesis.cpc.domains.AccessLog;
+import kinesis.cpc.filters.DedupeFilterFunction;
+import kinesis.cpc.sinks.KinesisStreamSink;
+import kinesis.cpc.sources.KinesisStreamSource;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -64,8 +58,6 @@ public class FlinkStreamingJob {
 
 		input.map(value -> FlinkConstants.objectMapper().readValue(value, AccessLog.class))
 				.keyBy(v -> v.getIpAddress()) // Logically partition the stream per stock symbol
-				// .window(TumblingProcessingTimeWindows.of(Time.milliseconds(DEDUPE_CACHE_EXPIRATION_TIME_MS)))
-				// .min(1) // Calculate the minimum price over the window
 				.filter(new DedupeFilterFunction(AccessLog.getKeySelector(), DEDUPE_CACHE_EXPIRATION_TIME_MS))
 				.sinkTo(KinesisStreamSink.createKinesisSink(applicationProperties)); // Write to Firehose Delivery Stream
 
