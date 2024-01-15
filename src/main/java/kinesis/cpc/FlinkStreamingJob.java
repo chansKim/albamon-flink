@@ -51,7 +51,7 @@ public class FlinkStreamingJob {
 		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 		env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
 		final ParameterTool applicationProperties = loadApplicationParameters(args, env);
-		log.info("Application properties: {}", applicationProperties.toMap());
+		log.warn("Application properties: {}", applicationProperties.toMap());
 
 		FlinkKinesisConsumer<String> source = KinesisStreamSource.createKinesisSource(applicationProperties);
 		DataStream<String> input = env.addSource(source, "Kinesis source");

@@ -20,8 +20,6 @@ public class KinesisStreamSink {
 		Properties sinkProperties = new Properties();
 		// Required
 		sinkProperties.put(AWSConfigConstants.AWS_REGION, applicationProperties.get("kinesis.region", DEFAULT_AWS_REGION));
-		sinkProperties.put(AWSConfigConstants.AWS_ACCESS_KEY_ID, "AWS_ACCESS_KEY_ID");
-		sinkProperties.put(AWSConfigConstants.AWS_SECRET_ACCESS_KEY, "AWS_SECRET_ACCESS_KEY");
 
 		return KinesisStreamsSink.<AccessLog>builder()
 				.setKinesisClientProperties(sinkProperties)
