@@ -9,8 +9,6 @@ import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.Deseriali
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import lombok.experimental.UtilityClass;
 
@@ -21,8 +19,9 @@ public class FlinkConstants {
 	public final String DEFAULT_EFO_CONSUMER_NAME = "albamon-flink-consumer";
 	public final String DEFAULT_SINK_STREAM = "chansKinesis";
 	public final String DEFAULT_AWS_REGION = Regions.AP_NORTHEAST_2.getName();
+	public final String DEFAULT_FILTER_AGENT = "Postman,Etc";
 
-	public final long DEDUPE_CACHE_EXPIRATION_TIME_MS = 20_000;
+	public final long DEDUPE_CACHE_EXPIRATION_TIME_MS = 30_000;
 
 	public ObjectMapper objectMapper() {
 		ObjectMapper objectMapper = new ObjectMapper();

@@ -16,9 +16,9 @@ import org.apache.flink.streaming.connectors.kinesis.FlinkKinesisConsumer;
 
 import com.amazonaws.services.kinesisanalytics.runtime.KinesisAnalyticsRuntime;
 
-import kinesis.cpc.constants.FlinkConstants;
 import kinesis.cpc.domains.AccessLog;
 import kinesis.cpc.filters.DedupeFilterFunction;
+import kinesis.cpc.filters.UserAgentFilter;
 import kinesis.cpc.sinks.KinesisStreamSink;
 import kinesis.cpc.sources.KinesisStreamSource;
 import lombok.extern.slf4j.Slf4j;
@@ -56,8 +56,8 @@ public class FlinkStreamingJob {
 		FlinkKinesisConsumer<String> source = KinesisStreamSource.createKinesisSource(applicationProperties);
 		DataStream<String> input = env.addSource(source, "Kinesis source");
 
-		input.map(value -> FlinkConstants.objectMapper().readValue(value, AccessLog.class))
-				.keyBy(v -> v.getIpAddress()) // Logically partition the stream per stock symbol
+		input.map(value -> objectMapper().readValue(value, AccessLog.class))
+				.filter(value -> UserAgentFilter.userAgentFilter(value, applicationProperties))
 				.filter(new DedupeFilterFunction(AccessLog.getKeySelector(), DEDUPE_CACHE_EXPIRATION_TIME_MS))
 				.sinkTo(KinesisStreamSink.createKinesisSink(applicationProperties)); // Write to Firehose Delivery Stream
 
