@@ -58,10 +58,7 @@ public class FlinkStreamingJob {
 	}
 
 	private static void analyticsProcess(StreamExecutionEnvironment env, DataStream<String> input, ParameterTool applicationProperties) throws Exception {
-		input.map(value -> {
-					System.out.println(value);
-					return objectMapper().readValue(value, AccessLog.class);
-				})
+		input.map(value -> objectMapper().readValue(value, AccessLog.class))
 				.filter(value -> UserAgentFilter.userAgentFilter(value, applicationProperties))
 				.filter(new DedupeFilterFunction(AccessLog.getKeySelector(), DEDUPE_CACHE_EXPIRATION_TIME_MS))
 				.sinkTo(KinesisStreamSink.createKinesisSink(applicationProperties)); // Write to Firehose Delivery Stream
