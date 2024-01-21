@@ -1,27 +1,42 @@
 package kinesis.cpc.domains;
 
-import java.time.LocalDateTime;
-
 import org.apache.flink.api.java.functions.KeySelector;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
 @RequiredArgsConstructor
-@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AccessLog {
-  private String ipAddress;
-  private String url;
-  private String referer;
-  private String memberId;
-  private String userAgent;
-  private LocalDateTime localDateTime;
+	private static final String SEPARATOR = "/";
+	/**
+	 * 기본 정보
+	 */
+	private String ipAddress;
+	private String url;
+	private String referer;
+	private String userAgent;
+	private String dateTime;
 
-    public static KeySelector<AccessLog, String> getKeySelector() {
-      return accessLog -> accessLog.ipAddress;
-  }
+	/**
+	 * 서비스 정보
+	 */
+	private String serviceName;
+	private String logType;
+
+	/**
+	 * 사용자 정보
+	 */
+	private String recruitNo;
+	private String memberId;
+
+	public static KeySelector<AccessLog, String> getKeySelector() {
+		return accessLog -> accessLog.ipAddress + SEPARATOR
+							+ accessLog.getRecruitNo() + SEPARATOR
+							+ accessLog.logType;
+	}
 }

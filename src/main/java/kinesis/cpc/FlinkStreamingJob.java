@@ -23,7 +23,6 @@ import kinesis.cpc.sinks.KinesisStreamSink;
 import kinesis.cpc.sources.KinesisStreamSource;
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j
 public class FlinkStreamingJob {
 
@@ -55,8 +54,14 @@ public class FlinkStreamingJob {
 
 		FlinkKinesisConsumer<String> source = KinesisStreamSource.createKinesisSource(applicationProperties);
 		DataStream<String> input = env.addSource(source, "Kinesis source");
+		analyticsProcess(env, input, applicationProperties);
+	}
 
-		input.map(value -> objectMapper().readValue(value, AccessLog.class))
+	private static void analyticsProcess(StreamExecutionEnvironment env, DataStream<String> input, ParameterTool applicationProperties) throws Exception {
+		input.map(value -> {
+					System.out.println(value);
+					return objectMapper().readValue(value, AccessLog.class);
+				})
 				.filter(value -> UserAgentFilter.userAgentFilter(value, applicationProperties))
 				.filter(new DedupeFilterFunction(AccessLog.getKeySelector(), DEDUPE_CACHE_EXPIRATION_TIME_MS))
 				.sinkTo(KinesisStreamSink.createKinesisSink(applicationProperties)); // Write to Firehose Delivery Stream
