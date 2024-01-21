@@ -1,6 +1,6 @@
 package kinesis.cpc.sinks;
 
-import static kinesis.cpc.constants.FlinkConstants.*;
+import static kinesis.cpc.config.FlinkConfig.*;
 
 import java.util.Properties;
 

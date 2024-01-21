@@ -1,7 +1,7 @@
 package kinesis.cpc.filters;
 
 import static java.util.Arrays.*;
-import static kinesis.cpc.constants.FlinkConstants.*;
+import static kinesis.cpc.config.FlinkConfig.*;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
