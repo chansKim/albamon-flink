@@ -34,6 +34,21 @@ public class AccessLog {
 	private String recruitNo;
 	private String memberId;
 
+	public static AccessLog of(AccessLog log) {
+		AccessLog accessLog = new AccessLog();
+		accessLog.ipAddress = log.ipAddress;
+		accessLog.url = log.url;
+		accessLog.referer = log.referer;
+		accessLog.userAgent = log.userAgent;
+		accessLog.dateTime = log.dateTime;
+		accessLog.serviceName = log.serviceName;
+		accessLog.logType = log.logType;
+		accessLog.recruitNo = log.recruitNo;
+		accessLog.memberId = log.memberId;
+
+		return accessLog;
+	}
+
 	public static KeySelector<AccessLog, String> getKeySelector() {
 		return accessLog -> accessLog.ipAddress + SEPARATOR
 							+ accessLog.getRecruitNo() + SEPARATOR

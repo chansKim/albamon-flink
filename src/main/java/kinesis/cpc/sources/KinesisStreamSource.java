@@ -1,6 +1,6 @@
 package kinesis.cpc.sources;
 
-import static kinesis.cpc.config.FlinkConfig.*;
+import static kinesis.cpc.config.FlinkConstants.*;
 import static org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants.*;
 import static org.apache.flink.streaming.connectors.kinesis.config.ConsumerConfigConstants.RecordPublisherType.*;
 

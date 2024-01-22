@@ -1,7 +1,7 @@
 package kinesis.cpc.filters;
 
 import static java.util.Arrays.*;
-import static kinesis.cpc.config.FlinkConfig.*;
+import static kinesis.cpc.config.FlinkConstants.*;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @UtilityClass
 public class UserAgentFilter {
+
 	public static boolean userAgentFilter(AccessLog accessLog, ParameterTool applicationProperties) {
 		if (ObjectUtils.isEmpty(accessLog) || StringUtils.isEmpty(accessLog.getUserAgent())) {
 			return false;
@@ -57,7 +58,7 @@ public class UserAgentFilter {
 		return false;
 	}
 
-	static int[] makeTable(String pattern) {
+	private static int[] makeTable(String pattern) {
 		int n = pattern.length();
 		int[] table = new int[n];
 
