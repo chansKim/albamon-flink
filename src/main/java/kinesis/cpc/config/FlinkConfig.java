@@ -23,10 +23,10 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class FlinkConfig {
-	public final String DEFAULT_SOURCE_STREAM = "jmchoi1-clickstream-poc";
+	public final String DEFAULT_SOURCE_STREAM = "raw-stream-kinesis";
 	public final String DEFAULT_PUBLISHER_TYPE = RecordPublisherType.POLLING.name(); // "POLLING" for standard consumer, "EFO" for Enhanced Fan-Out
 	public final String DEFAULT_EFO_CONSUMER_NAME = "albamon-flink-consumer";
-	public final String DEFAULT_SINK_STREAM = "chansKinesis";
+	public final String DEFAULT_SINK_STREAM = "convert-stream-kinesis";
 	public final String DEFAULT_AWS_REGION = Regions.AP_NORTHEAST_2.getName();
 	public final String DEFAULT_FILTER_AGENT = "Postman,Etc";
 
