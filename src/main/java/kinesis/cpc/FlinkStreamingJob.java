@@ -12,7 +12,7 @@ import kinesis.cpc.config.Splitter;
 import kinesis.cpc.domains.AccessLog;
 import kinesis.cpc.filters.DedupeFilterFunction;
 import kinesis.cpc.filters.UserAgentFilter;
-import kinesis.cpc.sinks.KinesisStreamSink;
+import kinesis.cpc.sinks.FirehoseSink;
 import kinesis.cpc.sources.KinesisStreamSource;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,7 +37,7 @@ public class FlinkStreamingJob {
 				.flatMap(new Splitter())
 				.filter(value -> UserAgentFilter.userAgentFilter(value, applicationProperties))
 				.filter(new DedupeFilterFunction<>(AccessLog.getKeySelector(), DEDUPE_CACHE_EXPIRATION_TIME_MS))
-				.sinkTo(KinesisStreamSink.createKinesisSink(applicationProperties)); // Write to Firehose Delivery Stream
+				.sinkTo(FirehoseSink.createKinesisFirehoseSink(applicationProperties)); // Write to Firehose Delivery Stream
 
 		env.execute();
 	}

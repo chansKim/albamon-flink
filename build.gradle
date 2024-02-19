@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'albamon.com'
+group = 'com.albamon'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -17,8 +17,9 @@ repositories {
 dependencies {
     implementation 'com.amazonaws:aws-kinesisanalytics-runtime:1.1.0'
     implementation 'org.apache.flink:flink-connector-kinesis:1.15.4'
+    implementation 'org.apache.flink:flink-connector-aws-kinesis-firehose:1.15.4'
     implementation 'org.apache.flink:flink-clients:1.18.0'
-    compileOnly 'org.apache.flink:flink-streaming-java:1.18.0'
+    implementation 'org.apache.flink:flink-streaming-java:1.18.0'
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
@@ -26,4 +27,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    manifest {
+        attributes 'Version': version, 'Main-Class': 'kinesis.cpc.FlinkStreamingJob'
+    } from {
+        configurations.compileClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }
