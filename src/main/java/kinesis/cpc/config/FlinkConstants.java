@@ -17,5 +17,5 @@ public class FlinkConstants {
 	public final String DEFAULT_AWS_REGION = Regions.AP_NORTHEAST_2.getName();
 	public final String DEFAULT_FILTER_AGENT = "Postman,Etc";
 
-	public final long DEDUPE_CACHE_EXPIRATION_TIME_MS = 30_000;
+	public final long DEDUPE_CACHE_EXPIRATION_TIME_MS = 10_000;
 }

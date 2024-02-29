@@ -52,11 +52,21 @@ public class AccessLog {
 		accessLog.url = log.url;
 		accessLog.referer = log.referer;
 		accessLog.userAgent = log.userAgent;
+		accessLog.clientType = log.clientType;
 		accessLog.dateTime = log.dateTime;
+
 		accessLog.serviceName = log.serviceName;
 		accessLog.logType = log.logType;
+
 		accessLog.recruitNo = log.recruitNo;
+		accessLog.recruitName = log.recruitName;
+		accessLog.parts = log.parts;
+		accessLog.locations = log.locations;
+		accessLog.products = log.products;
+		accessLog.layout = log.layout;
+
 		accessLog.memberId = log.memberId;
+		accessLog.memberType = log.memberType;
 
 		return accessLog;
 	}
