@@ -13,6 +13,7 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AccessLog {
 	private static final String SEPARATOR = "/";
+
 	/**
 	 * 기본 정보
 	 */
@@ -20,6 +21,7 @@ public class AccessLog {
 	private String url;
 	private String referer;
 	private String userAgent;
+	private String clientType;
 	private String dateTime;
 
 	/**
@@ -29,10 +31,20 @@ public class AccessLog {
 	private String logType;
 
 	/**
-	 * 사용자 정보
+	 * 광고 정보
 	 */
 	private String recruitNo;
+	private String recruitName;
+	private String parts;
+	private String locations;
+	private String products;
+	private String layout;
+
+	/**
+	 * 사용자 정보
+	 */
 	private String memberId;
+	private String memberType;
 
 	public static AccessLog of(AccessLog log) {
 		AccessLog accessLog = new AccessLog();
